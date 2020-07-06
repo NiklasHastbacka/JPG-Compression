@@ -1,3 +1,4 @@
+
 package com.company;
 
 import javax.imageio.IIOImage;
@@ -15,14 +16,13 @@ import java.util.Iterator;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        // Convert to jpg
-        BufferedImage img = ImageIO.read(new File("C:/tmp/tojpg/img/image.jpg"));
-        ImageIO.write(img, "jpg", new File("C:/tmp/tojpg/jpg/image.jpg"));
+    public static void compress(String file) throws IOException
+    {
 
+        BufferedImage img = ImageIO.read(new File(file));
         File jpgImg = new File("C:/tmp/tojpg/jpg/image.jpg");
+        ImageIO.write(img, "jpg", jpgImg);
 
-        // Read the new jpg image
         BufferedImage image = ImageIO.read(jpgImg);
         File compressedImageFile = new File("C:/tmp/tojpg/compressed/compressedimg.jpg");
         OutputStream os = new FileOutputStream(compressedImageFile);
@@ -54,5 +54,10 @@ public class Main {
         ios.close();
         writer.dispose();
 
+    }
+
+    public static void main(String[] args) throws IOException {
+        String imageToCompress = "C:/tmp/tojpg/img/image.tiff";
+        compress(imageToCompress);
     }
 }
