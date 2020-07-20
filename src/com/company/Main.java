@@ -20,11 +20,11 @@ public class Main {
     {
 
         BufferedImage img = ImageIO.read(new File(file));
-        File jpgImg = new File("C:/tmp/tojpg/jpg/image.jpg");
+        File jpgImg = new File(/* File where the jpg output should be */);
         ImageIO.write(img, "jpg", jpgImg);
 
         BufferedImage image = ImageIO.read(jpgImg);
-        File compressedImageFile = new File("C:/tmp/tojpg/compressed/compressedimg.jpg");
+        File compressedImageFile = new File(/* Where the compressed image(JPG) should be */);
         OutputStream os = new FileOutputStream(compressedImageFile);
 
         Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
@@ -57,7 +57,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String imageToCompress = "C:/tmp/tojpg/img/image.tiff";
+        String imageToCompress = /* File that should be compressed */;
         compress(imageToCompress);
     }
 }
